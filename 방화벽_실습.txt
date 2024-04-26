@@ -1,0 +1,53 @@
+https://cloud.google.com/shell?hl=ko
+
+초기 세팅
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install net-tools -y
+sudo apt install iptables -y
+
+sudo apt install apache2
+sudo service apache2 start 
+
+sudo iptables -F
+iptables -A INPUT -i eth0 -j ACCEPT
+iptables -A OUTPUT -o eth0 -j ACCEPT
+
+
+규칙확인 명령어
+sudo iptables -L -n -v
+
+규칙삭제 명령어
+sudo iptables -D INPUT or OUTPUT [Chain NUM]
+# 만든 규칙 삭제해보기
+
+인바운드 허용 명령어
+sudo iptables -A INPUT -p tcp --dport [port] -j ACCEPT
+sudo iptables -A INPUT -s [IP] -j ACCEPT
+
+인바운드 차단 명령어
+sudo iptables -A INPUT -s [IP] -j DROP
+sudo iptables -A INPUT -p tcp --dport DROP[port] -j 
+# apache 서버 응답 차단해보기
+
+아웃바운드 허용 명령어
+sudo iptables -A OUTPUT -p tcp --dport [port] -j ACCEPT
+sudo iptables -A OUTPUT -s [IP] -j ACCEPT
+
+아웃바운드 차단 명령어
+sudo iptables -A OUTPUT -d [IP] -j DROP
+sudo iptables -A OUTPUT -p tcp --dport [port] -j DROP
+# 8.8.8.8 차단 해보기
+
+모든 포트 열기 닫기
+sudo iptables -P INPUT DROP
+sudo iptables -P FORWARD DROP
+sudo iptables -P OUTPUT DROP
+
+sudo iptables -P INPUT ACCEPT 
+sudo iptables -P FORWARD ACCEPT
+sudo iptables -P OUTPUT ACCEPT # 다시 허용
+
+sudo iptables -A INPUT -p icmp -j ACCEPT
+sudo iptables -A OUTPUT -p icmp -j ACCEPT # ICMP만 허용
+
