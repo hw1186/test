@@ -6,7 +6,7 @@ sudo apt upgrade -y
 sudo apt install net-tools -y
 sudo apt install iptables -y
 
-sudo apt install apache2
+sudo apt install apache2 -y
 sudo service apache2 start 
 
 sudo iptables -F
