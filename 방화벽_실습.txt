@@ -19,7 +19,6 @@ sudo iptables -L -n -v
 
 규칙삭제 명령어
 sudo iptables -D INPUT or OUTPUT [Chain NUM]
-# 만든 규칙 삭제해보기
 
 인바운드 허용 명령어
 sudo iptables -A INPUT -p tcp --dport [port] -j ACCEPT
@@ -27,7 +26,8 @@ sudo iptables -A INPUT -s [IP] -j ACCEPT
 
 인바운드 차단 명령어
 sudo iptables -A INPUT -s [IP] -j DROP
-sudo iptables -A INPUT -p tcp --dport DROP[port] -j 
+sudo iptables -A INPUT -p tcp --dport [PORT] -j DROP
+
 # apache 서버 응답 차단해보기
 
 아웃바운드 허용 명령어
@@ -50,4 +50,3 @@ sudo iptables -P OUTPUT ACCEPT # 다시 허용
 
 sudo iptables -A INPUT -p icmp -j ACCEPT
 sudo iptables -A OUTPUT -p icmp -j ACCEPT # ICMP만 허용
-
