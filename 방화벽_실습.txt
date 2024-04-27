@@ -2,7 +2,6 @@ https://cloud.google.com/shell?hl=ko
 
 초기 세팅
 sudo apt update -y
-sudo apt upgrade -y
 sudo apt install net-tools -y
 sudo apt install iptables -y
 
@@ -10,8 +9,8 @@ sudo apt install apache2 -y
 sudo service apache2 start 
 
 sudo iptables -F
-iptables -A INPUT -i eth0 -j ACCEPT
-iptables -A OUTPUT -o eth0 -j ACCEPT
+sudo iptables -A INPUT -i eth0 -j ACCEPT
+sudo iptables -A OUTPUT -o eth0 -j ACCEPT
 
 
 규칙확인 명령어
